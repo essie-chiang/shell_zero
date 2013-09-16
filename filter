@@ -1,0 +1,1 @@
+tail -n 10000 test | awk '{name[$1]+=1}END{for(in in name){print name[i]" "i}}' | sort -nr | head -n 10

@@ -1,0 +1,22 @@
+#!/bin/bash
+#taken from blog.csdn.net/dbvasp
+randomIP(){
+	IP="$(($RANDOM/128))"
+       	IP=${IP}.$(($RANDOM/128))
+       	IP=${IP}.$(($RANDOM/128))
+       	IP=${IP}.$(($RANDOM/128))
+       	echo $IP
+}
+sum=1
+echo > test
+while [ $sum -le 110000 ]
+do
+        j=$(($RANDOM % 200 + 1))
+        addr=$(randomIP)
+        for i in `seq 1 $j`
+        do
+                echo -n "$addr" >> test
+                echo ' - - [01/Aug/2003:15:39:39 +0800] "GET　/epl.shtml HTTP/1.1" 302 251 "http://www.hao123.com/"' >> test
+        done
+                sum=$(($sum+$j))
+done
